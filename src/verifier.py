@@ -1,6 +1,6 @@
 import re
 
-# List of agency-related keywords
+
 AGENCY_KEYWORDS = [
     "services", "web design", "web development", "SEO agency",
     "ads agency", "digital marketing agency", "agency", "website creation"

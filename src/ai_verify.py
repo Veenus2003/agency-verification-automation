@@ -15,18 +15,36 @@ chat_model = ChatGroq(model_name="llama3-8b-8192", groq_api_key=api_key)
 
 def analyze_with_ai(text):
     prompt = f"""
-    You are an AI that determines whether a website belongs to a digital agency.
-    A digital agency provides services such as web design, web development, branding, digital marketing, or advertising.
+You are an AI designed to verify whether a website belongs to an agency that qualifies for CookieYes.
 
-    Analyze the following website content and classify it as either:
-    - "Approved" (if it is an agency)
-    - "Rejected" (if it is not an agency)
+### **What Qualifies as an Agency?**
+An eligible agency should offer at least one of the following services:
+1. **Web Design**
+2. **Web Development**
+3. **SEO Services**
+4. **Advertising or Digital Marketing**
+5. **Branding Services**
+6. **Social Media Marketing**
+7. **Website Creation & Management**
 
-    Respond with ONLY "Approved" or "Rejected". Do NOT include explanations.
+### **What Should Be Rejected?**
+- SaaS platforms, software companies, or product-based businesses.
+- Consulting firms or general business services that don’t focus on web-related services.
+- Companies with no clear mention of agency-related services.
 
-    Website Content:
-    {text[:4000]}  # Limit to 4000 characters
-    """
+### **Task:**
+Analyze the following website content and classify it as either:
+- **"Approved"** (if it is an eligible agency based on the criteria above)
+- **"Rejected"** (if it does not match the criteria)
+
+Respond with **ONLY** "Approved" or "Rejected". Do **NOT** include explanations.
+
+### **Website Content:**
+{text[:7000]}  # Limit to 4000 characters
+"""
+
+
+
 
     try:
         response = chat_model.invoke([HumanMessage(content=prompt)])
