@@ -5,12 +5,12 @@ CSV_FILE = "agency_verification_results.csv"
 
 def save_result(agency_url, decision, found_keywords):
     """Saves the verification result (Approved/Rejected) into a CSV file."""
-    file_exists = os.path.isfile(CSV_FILE)
-    
+    file_exists = os.path.isfile(CSV_FILE) and os.path.getsize(CSV_FILE) > 0  # Ensure file is not empty
+
     with open(CSV_FILE, mode="a", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-        
-        # Write header only if the file is new
+
+        # ✅ Write header only if the file is new or empty
         if not file_exists:
             writer.writerow(["Agency URL", "Decision", "Keywords Found"])
         
