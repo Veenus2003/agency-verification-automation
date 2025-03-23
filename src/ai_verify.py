@@ -17,31 +17,44 @@ def analyze_with_ai(text):
     prompt = f"""
 You are an AI designed to verify whether a website belongs to an agency that qualifies for CookieYes.
 
-### **What Qualifies as an Agency?**
-An eligible agency should offer at least one of the following services:
-1. **Web Design**
-2. **Web Development**
-3. **SEO Services**
-4. **Advertising or Digital Marketing**
-5. **Branding Services**
-6. **Social Media Marketing**
-7. **Website Creation & Management**
+### **What Qualifies as an Agency?**  
+An eligible agency should offer at least one of the following services:  
+1. **Website Development & Design**  
+2. **Digital Marketing, PR, or Advertising**  
+3. **SEO Services**  
+4. **Data Analytics & Reporting**  
+5. **Web Hosting & IT Services**  
+6. **Legal & Data Compliance Consulting**  
+7. **Freelance Web Development & Design**  
 
-### **What Should Be Rejected?**
-- SaaS platforms, software companies, or product-based businesses.
-- Consulting firms or general business services that don’t focus on web-related services.
-- Companies with no clear mention of agency-related services.
+### **Keywords to Identify an Agency:**  
+Look for words and phrases like:  
+- "Services"  
+- "Web Design"  
+- "Web Development"  
+- "SEO Agency"  
+- "Ads Agency"  
+- "Digital Marketing Agency"  
+- "Agency"  
+- "Website Creation"  
+- Other similar terms that indicate the website belongs to an agency  
 
-### **Task:**
-Analyze the following website content and classify it as either:
-- **"Approved"** (if it is an eligible agency based on the criteria above)
-- **"Rejected"** (if it does not match the criteria)
+### **What Should Be Rejected?**  
+- SaaS platforms, software companies, or product-based businesses  
+- General consulting firms that do not focus on web-related services  
+- Companies with no clear mention of agency-related services  
 
-Respond with **ONLY** "Approved" or "Rejected". Do **NOT** include explanations.
+### **Task:**  
+Analyze the following website content and classify it as either:  
+- **"Approved"** (if it is an eligible agency based on the criteria above)  
+- **"Rejected"** (if it does not match the criteria)  
 
-### **Website Content:**
-{text[:7000]}  # Limit to 4000 characters
+Respond with **ONLY** "Approved" or "Rejected". Do **NOT** include explanations.  
+
+### **Website Content:**  
+{text[:7000]}  # Limit to 7000 characters
 """
+
 
 
 
