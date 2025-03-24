@@ -63,10 +63,10 @@ Respond with **ONLY** "Approved" or "Rejected". Do **NOT** include explanations.
         response = chat_model.invoke([HumanMessage(content=prompt)])
         decision = response.content.strip()  # Clean response
 
-        # ✅ Debugging: Show AI output
+        
         print(f"Raw AI Response: {decision}")
 
-        # ✅ Directly return the response if it's correct
+        
         if decision in ["Approved", "Rejected"]:
             return decision
         else:
@@ -75,10 +75,10 @@ Respond with **ONLY** "Approved" or "Rejected". Do **NOT** include explanations.
 
     except Exception as e:
         print(f"AI Response Error: {e}")
-        return "Rejected"  # Default to rejected if AI fails
+        return "Rejected"  
 
 
-# ✅ Test case
+
 if __name__ == "__main__":
     sample_text = "We are a digital agency specializing in web development and branding."
-    print(analyze_with_ai(sample_text))  # Expected Output: "Approved" or "Rejected"
+    print(analyze_with_ai(sample_text))  

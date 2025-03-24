@@ -6,7 +6,7 @@ from ai_verify import analyze_with_ai  # AI verification
 from store_results import save_result
 
 def get_website_text(url):
-    """Fetches and extracts meaningful text content from the given URL."""
+    
     try:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -14,7 +14,7 @@ def get_website_text(url):
         response.raise_for_status()
 
         soup = BeautifulSoup(response.text, "html.parser")
-        text_blocks = soup.find_all(['p', 'h1', 'h2', 'h3', 'article'])
+        text_blocks = soup.find_all(['p', 'h1', 'h2', 'h3', 'article',])
 
         # Extract text while removing unnecessary elements
         text = ' '.join([block.get_text() for block in text_blocks])
@@ -33,12 +33,12 @@ def get_website_text(url):
 if __name__ == "__main__":
     agency_url = input("Enter the agency website URL: ").strip()
     
-    print(f"\n🔍 Scraping: {agency_url}")
+    print(f"\nScraping: {agency_url}")
     website_text = get_website_text(agency_url)
     
     if website_text:
         print(f" Extracted {len(website_text)} characters of text.\n")
-
+        #print(website_text);
         
         is_agency, found_keywords = check_agency_keywords(website_text)
 
@@ -46,7 +46,7 @@ if __name__ == "__main__":
             decision = "Approved"
             print(f"Approved (Keywords found: {found_keywords})")
         else:
-            print("🤖 No keywords found, asking AI for decision...")
+            print("No keywords found, asking AI for decision...")
             decision = analyze_with_ai(website_text)  # Direct AI response
 
             
@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 print(" AI Response Error: Unexpected output, forcing rejection.")
                 decision = "Rejected"
 
-        print(f"🔍 Final Decision: {decision}")
+        print(f"Final Decision: {decision}")
 
         
         if not found_keywords and decision == "Approved":
